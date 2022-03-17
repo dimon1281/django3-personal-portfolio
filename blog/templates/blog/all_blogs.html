@@ -1,0 +1,26 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+{% load blog.rupluralize %}
+
+</html>
+  <head><h1 align="center"><font color="red">Это голова</font></h1></head>
+  <title>Мой первый блог</title>
+
+  <body>
+    <h1>Хеллоу, ёптыдь!)</h1>
+    <h2>Я написал {{ blogs.count }} {{ blogs.count|rupluralize:"блог-пост, блог-поста, блог-постов" }}</h2>
+    <br>
+    <h2>Начинаем заполнять мой первый блог</h2>
+
+  {% for blog in blogs %}
+      <a href="{% url 'blog:detail' blog.id %}"><h1>{{ blog.title }}</h1></a>
+      {{ blog.date|date:'d M Y'|upper }}
+      <h3>{{ blog.description|striptags|truncatechars:150 }}</h3><br><br>
+  {% endfor %}
+
+  </body>
+
+{% endblock %}
+</html>

@@ -1,0 +1,33 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+  <head><title>Это описание страницы</title></head>
+
+  <body>
+
+    <a href="{% url 'blog:all_blogs' %}">Страничка блога</a>
+    <h2>Это первая страничка в этом проекте</h2>
+
+    <img src="{% static 'portfolio/DSC_0236.JPG' %}" height="350">
+    <p><a href="{% static 'portfolio/blank_resume_2019_blanki-vsem.ru_.pdf' %}">Резюме</a></p>
+
+
+    {% for project in projects %}
+
+            {{ project.title }}<br>
+            {{ project.description }}<br>
+            <img src="{{ project.image.url }}" height="280"><br>
+            {% if project.url %}
+            <a href="{{ project.url }}">Ссылка</a><br><br>
+            {% endif %}
+
+    {% endfor %}
+    </table>
+
+  </body>
+{% endblock %}
+</html>
