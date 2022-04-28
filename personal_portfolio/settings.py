@@ -23,11 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$$r9q&8pgs$x0!h3)edl4e-fo_+(8x%_qvb_6o*03^41u0&1jc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = [
-    'dimitriy128.pythonanywhere.com'
-    ]
+ALLOWED_HOSTS = ['dimitriy128.pythonanywhere.com']
 
 
 # Application definition
@@ -41,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'portfolio',
+    'personal_portfolio',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +130,8 @@ MEDIA_ROOT = Path(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+try:
+    from .local_settings import *
+except:
+    print ("local_settings не найдено!")
